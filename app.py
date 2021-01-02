@@ -1,9 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 
 import parser
 
 
 app = Flask(__name__)
+# TODO: Probably not needed when actually deployed?
+CORS(app) 
 
 
 @app.route('/api/all/<date>')
