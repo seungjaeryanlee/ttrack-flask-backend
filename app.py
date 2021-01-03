@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 
 import parser
@@ -18,3 +18,8 @@ def get_all_data(date):
     info_dict = parser.get_info_dict(duration_and_lines)
 
     return info_dict
+
+@app.route('/api/log/save', methods=['PUT'])
+def save_log():
+    print(request.json)
+    return "OK"
