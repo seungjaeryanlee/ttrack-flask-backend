@@ -21,6 +21,7 @@ def get_all_data(date):
 
     return info_dict
 
+
 @app.route('/api/log/<date>')
 def get_log(date):
     year, month, day = date.split("-")
@@ -31,6 +32,30 @@ def get_log(date):
     else:
         return { "log" : "" }
 
+
 @app.route('/api/log/save', methods=['PUT'])
 def save_log():
     return { "status": "success" }
+
+
+@app.route('/api/rules/all')
+def get_all_rules():
+    LABEL_TO_DB_FILES = {
+        "School and Work": "school_and_work_tasks.txt",
+        "Personal Development": "personal_development_tasks.txt",
+        "Personal Well-being": "personal_well_being_tasks.txt",
+        "Misc": "misc_tasks.txt",
+        "Personal Enjoyment": "personal_enjoyment_tasks.txt",
+        "Ignore": "ignore_tasks.txt",
+    }
+
+    task_to_label = {}
+    for label, db_filename in LABEL_TO_DB_FILES.items():
+        with open('ttrack-database/parser_rules/{}'.format(db_filename), 'r') as f:
+            for line in f.readlines():
+                task = line.strip()
+                if not task or task[0] == '#':
+                    continue
+                task_to_label[task] = label
+
+    return task_to_label

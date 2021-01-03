@@ -27,7 +27,7 @@ class Classifier():
         """
         self.task_to_label = {}
         for label, db_filename in LABEL_TO_DB_FILES.items():
-            with open('parser_rules/{}'.format(db_filename), 'r') as f:
+            with open('ttrack-database/parser_rules/{}'.format(db_filename), 'r') as f:
                 for line in f.readlines():
                     task = line.strip()
                     if not task or task[0] == '#':
