@@ -19,7 +19,14 @@ def get_all_data(date):
 
     return info_dict
 
+@app.route('/api/log/<date>')
+def get_log(date):
+    year, month, day = date.split("-")
+    filepath = f"ttrack-database/log/{year}/{month}/{year}-{month}-{day}.txt"
+    raw_lines = parser.get_raw_lines(filepath)
+
+    return { "log": "\n".join(raw_lines) }
+
 @app.route('/api/log/save', methods=['PUT'])
 def save_log():
-    print(request.json)
-    return "OK"
+    return { "status": "success" }
