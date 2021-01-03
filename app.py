@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -23,9 +25,11 @@ def get_all_data(date):
 def get_log(date):
     year, month, day = date.split("-")
     filepath = f"ttrack-database/log/{year}/{month}/{year}-{month}-{day}.txt"
-    raw_lines = parser.get_raw_lines(filepath)
-
-    return { "log": "\n".join(raw_lines) }
+    if Path(filepath).is_file():
+        raw_lines = parser.get_raw_lines(filepath)
+        return { "log": "\n".join(raw_lines) }
+    else:
+        return { "log" : "" }
 
 @app.route('/api/log/save', methods=['PUT'])
 def save_log():
