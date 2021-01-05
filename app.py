@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from flask import Flask, request
@@ -44,7 +45,17 @@ def get_log(date):
 
 @app.route('/api/log/save', methods=['PUT'])
 def save_log():
-    # TODO: Implement
+    date = request.json["date"]
+    log = request.json["log"]
+
+    year, month, day = date.split("-")
+    file_directory = f"ttrack-database/log/{year}/{month}"
+    filepath = f"{file_directory}/{year}-{month}-{day}.txt"
+
+    os.makedirs(file_directory, exist_ok=True)
+    with open(filepath, "w") as f:
+        f.write(log + "\n")
+
     return { "status": "success" }
 
 

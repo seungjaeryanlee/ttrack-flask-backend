@@ -71,8 +71,8 @@ def get_raw_lines(filepath):
         raw_lines = f.readlines()
         raw_lines = [raw_line.strip() for raw_line in raw_lines]
 
-    # Remove first line since it is the date
-    return raw_lines[1:]
+    # NOTE: We don't remove first line here and do it in frontend
+    return raw_lines
 
 
 # From seungjaeryanlee/self-management
