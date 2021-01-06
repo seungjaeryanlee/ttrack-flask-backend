@@ -1,18 +1,24 @@
 LABEL_TO_DB_FILES = {
-    "School and Work": "school_and_work_tasks.txt",
-    "Personal Development": "personal_development_tasks.txt",
-    "Personal Well-being": "personal_well_being_tasks.txt",
-    "Misc": "misc_tasks.txt",
-    "Personal Enjoyment": "personal_enjoyment_tasks.txt",
+    "Activities of Daily Living": "activities_of_daily_living.txt",
     "Ignore": "ignore_tasks.txt",
+    "Misc": "misc_tasks.txt",
+    "Personal Development": "personal_development_tasks.txt",
+    "Personal Enjoyment": "personal_enjoyment_tasks.txt",
+    "School and Work": "school_and_work_tasks.txt",
+    "Side Projects": "side_projects.txt",
+    "Sleep": "sleep.txt",
+    "Social Life": "social_life.txt",
 }
 LABEL_PRIORITIES = [
     "Unknown",
     "School and Work",
+    "Side Projects",
+    "Social Life",
     "Personal Development",
-    "Personal Well-being",
+    "Activities of Daily Living",
     "Misc",
     "Personal Enjoyment",
+    "Sleep",
     "Ignore",
 ]
 
